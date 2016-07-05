@@ -3,39 +3,42 @@ package com.example.jason.opps_concept.Model;
 /**
  * Created by jason on 04/07/2016.
  */
-public class Staff extends Person implements iPayroll {
-    private float salaryCoefficients;
-    private int salary;
+public abstract class Staff {
+    private String Name;
+    private String Sex;
+    private int Age;
 
-    public Staff(String name, String sex, int age, float salaryCoefficients, int salary) {
-        super(name, sex, age);
-        this.salaryCoefficients = salaryCoefficients;
-        this.salary = salary;
+    public Staff(){}
+
+    public Staff(String name, String sex, int age) {
+        Name = name;
+        Sex = sex;
+        Age = age;
     }
 
-    public float getSalaryCoefficients() {
-        return salaryCoefficients;
+    public String getName() {
+        return Name;
     }
 
-    public void setSalaryCoefficients(float salaryCoefficients) {
-        this.salaryCoefficients = salaryCoefficients;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public float getSalary() {
-        return salary;
+    public String getSex() {
+        return Sex;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setSex(String sex) {
+        Sex = sex;
     }
 
-    @Override
-    public float Payroll() {
-        return getSalaryCoefficients() * getSalary();
+    public int getAge() {
+        return Age;
     }
 
-    @Override
-    public float getPayroll() {
-        return getSalaryCoefficients() * getSalary();
+    public void setAge(int age) {
+        Age = age;
     }
+
+    public abstract float getPayroll();
 }

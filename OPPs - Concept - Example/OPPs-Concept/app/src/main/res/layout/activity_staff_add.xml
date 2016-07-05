@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Add Staff"
+            android:text="Main System"
             android:textColor="#FFF"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
@@ -164,7 +164,7 @@
         android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Staff"
+        android:text="Save"
         android:textColor="#FFF"
         android:background="@color/mainColor"
         android:onClick="addStaff"

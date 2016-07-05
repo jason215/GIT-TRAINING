@@ -7,7 +7,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.jason.opps_concept.CustomizeExceptionHandling.InValidAge;
+import com.example.jason.opps_concept.CustomizeExceptionHandling.InvalidAgeException;
+import com.example.jason.opps_concept.CustomizeExceptionHandling.NullValue;
+import com.example.jason.opps_concept.CustomizeExceptionHandling.NullValueException;
 import com.example.jason.opps_concept.Presenter.pAddStaff;
 import com.example.jason.opps_concept.R;
 
@@ -20,6 +25,9 @@ public class StaffAddActivity extends AppCompatActivity implements iAddStaffView
     private Spinner spnSex, spnPosition;
     private String Name = null, Sex = null, Position = null, Age = null;
     private pAddStaff mPAddStaff;
+    private NullValue mNullValueName;
+    private NullValue mNullValueAge;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +75,17 @@ public class StaffAddActivity extends AppCompatActivity implements iAddStaffView
     public void addStaff(View v){
         Name = edtName.getText().toString();
         Age = edtAge.getText().toString();
-        mPAddStaff.setStaffInformation(Name, Sex, Age, Position);
+        mNullValueName = new NullValue(Name);
+        mNullValueAge = new NullValue(Age);
+        try {
+            mNullValueName.checkValue();
+            mNullValueAge.checkValue();
+            mPAddStaff.setStaffInformation(Name, Sex, Age, Position);
+        } catch (NullValueException e) {
+            e.printStackTrace();
+            Toast.makeText(StaffAddActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -88,7 +106,7 @@ public class StaffAddActivity extends AppCompatActivity implements iAddStaffView
     @Override
     public List<String> setListPosition(){
         List<String> list = new ArrayList<>();
-        list.add("Staff");
+        list.add("Def");
         list.add("Leader");
         list.add("PM");
         list.add("CEO");
