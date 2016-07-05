@@ -38,5 +38,5 @@ public abstract class Person {
         Age = age;
     }
 
-
+    public abstract float getPayroll();
 }
